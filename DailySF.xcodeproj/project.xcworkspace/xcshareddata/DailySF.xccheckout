@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DF167959-7949-4B19-9DF7-9B2A280FAFA4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DailySF</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9531E620-C427-48D4-A180-12A74C752C1E</key>
+		<string>https://github.com/Caldis/DailySF.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DailySF.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9531E620-C427-48D4-A180-12A74C752C1E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Caldis/DailySF.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9531E620-C427-48D4-A180-12A74C752C1E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9531E620-C427-48D4-A180-12A74C752C1E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DailySF</string>
+		</dict>
+	</array>
+</dict>
+</plist>

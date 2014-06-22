@@ -7,7 +7,7 @@
 //
 
 #import "menuViewController.h"
-#import "ViewController.h"
+#import "mainViewController.h"
 
 static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewControllerCellReuseId";
 
@@ -32,12 +32,14 @@ static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCo
     return self;
 }
 //初始化为菜单
-- (id)initWithMenus:(NSArray *)menuList{
+- (id)initWithMenus:(NSArray *)menuList andColors:(NSArray *)colors{
     NSParameterAssert(menuList);
-    
+    NSParameterAssert(colors);
+
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         self.menuList = menuList;
+        self.colors = colors;
     }
     return self;
 }
@@ -79,16 +81,16 @@ static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCo
 //每个Sections多少行（Cell）
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSParameterAssert(self.colors);
-    return self.colors.count;
+    NSParameterAssert(self.menuList);
+    return self.menuList.count;
 }
 //设定每行（Cell）的内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSParameterAssert(self.colors);
+    NSParameterAssert(self.menuList);
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kICSColorsViewControllerCellReuseId forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"Color %ld", (long)indexPath.row];
+    cell.textLabel.text = [self.menuList objectAtIndex:indexPath.row];
     cell.textLabel.textColor = [UIColor whiteColor];
     
     cell.backgroundColor = self.colors[indexPath.row];
@@ -106,18 +108,34 @@ static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCo
         [self.drawer close];
     }
     else {
-        // Reload the current center view controller and update its background color
-        // Reload当前的CenterViewController然后更新背景颜色
-        //typeof(self) __weak weakSelf = self;
-        //[self.drawer reloadCenterViewControllerUsingBlock:^(){
-        //    NSParameterAssert(weakSelf.colors);
-        //    weakSelf.drawer.centerViewController.view.backgroundColor = weakSelf.colors[indexPath.row];
-        //}];
-        
-        //Replace the current center view controller with a new one
-        ViewController *center = [[ViewController alloc] init];
-        //center.view.backgroundColor = [UIColor redColor];
-        [self.drawer replaceCenterViewControllerWithViewController:center];
+        switch (indexPath.row) {
+            case 0:{
+                //Replace the current center view controller with a new one
+                //替换当前的CenterViewController为Storybroad中的mainCenterViewController
+                UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+                mainViewController *center = (mainViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainCenterViewController"];
+                [self.drawer replaceCenterViewControllerWithViewController:center];
+                break;
+            }
+            case 1:{
+                //Replace the current center view controller with a new one
+                //替换当前的CenterViewController为Storybroad中的optionCenterViewController
+                UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+                mainViewController *center = (mainViewController *)[storyboard instantiateViewControllerWithIdentifier:@"optionCenterViewController"];
+                [self.drawer replaceCenterViewControllerWithViewController:center];
+                break;
+            }
+            case 2:{
+                //Replace the current center view controller with a new one
+                //替换当前的CenterViewController为Storybroad中的aboutCenterViewController
+                UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+                mainViewController *center = (mainViewController *)[storyboard instantiateViewControllerWithIdentifier:@"aboutCenterViewController"];
+                [self.drawer replaceCenterViewControllerWithViewController:center];
+                break;
+            }
+            default:
+                break;
+        }
     }
     self.previousRow = indexPath.row;
 }

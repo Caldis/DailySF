@@ -6,16 +6,18 @@
 //  Copyright (c) 2014 Cb. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "mainViewController.h"
 
-@interface ViewController ()
+NSString *const MJTableViewCellIdentifier = @"Cell";
+
+@interface mainViewController ()
 //PARA
 @property (strong,nonatomic) NSArray *tableItems;
 //ICSD
 @property(nonatomic, strong) UIButton *openDrawerButton;
 @end
 
-@implementation ViewController
+@implementation mainViewController
 
 - (void)viewDidLoad
 {
@@ -36,16 +38,18 @@
     
     
     
-    // Initialize and add the openDrawerButton
-    UIImage *hamburger = [UIImage imageNamed:@"hamburger"];
-    
+    //初始化并且添加openDrawerButton
+    UIImage *hamburger = [UIImage imageNamed:@"menubuttom"];
      self.openDrawerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-     self.openDrawerButton.frame = CGRectMake(10.0f, 20.0f, 44.0f, 44.0f);
+     self.openDrawerButton.frame = CGRectMake(10.0f, 28.0f, 44.0f, 44.0f);
     [self.openDrawerButton setImage:hamburger forState:UIControlStateNormal];
     [self.openDrawerButton addTarget:self action:@selector(openDrawer:) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.view addSubview:self.openDrawerButton];
-}
+    
+    // 1.注册cell
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MJTableViewCellIdentifier];
+    // 2.集成刷新控件
+    [self setupRefresh];}
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -105,6 +109,51 @@
 #pragma mark - Open drawer button
 - (void)openDrawer:(id)sender{
     [self.drawer open];
+}
+
+
+#pragma mark - Start to refresh
+//下拉刷新
+- (void)headerRefreshing{
+    // 1.添加假数据
+    for (int i = 0; i<5; i++) {
+        //[self.fakeData insertObject:MJRandomData atIndex:0];
+    }
+    
+    // 2.2秒后刷新表格UI
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 刷新表格
+        [self.tableView reloadData];
+        
+        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+        [self.tableView headerEndRefreshing];
+    });
+}
+//上拉刷新
+- (void)footerRefreshing{
+    // 1.添加假数据
+    for (int i = 0; i<5; i++) {
+        //[self.fakeData addObject:MJRandomData];
+    }
+    
+    // 2.2秒后刷新表格UI
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 刷新表格
+        [self.tableView reloadData];
+        
+        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+        [self.tableView footerEndRefreshing];
+    });
+}
+- (void)setupRefresh
+{
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    [self.tableView addHeaderWithTarget:self action:@selector(headerRefreshing)];
+    //自动刷新(一进入程序就下拉刷新)
+    [self.tableView headerBeginRefreshing];
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [self.tableView addFooterWithTarget:self action:@selector(footerRefreshing)];
 }
 
 @end

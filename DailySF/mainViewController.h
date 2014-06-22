@@ -10,8 +10,9 @@
 #import "JBParallaxCell.h"
 #import "ICSDrawerController.h"
 #import "menuViewController.h"
+#import "MJRefresh.h"
 
-@interface ViewController : UIViewController <UIScrollViewDelegate,ICSDrawerControllerChild, ICSDrawerControllerPresenting>
+@interface mainViewController : UIViewController <UIScrollViewDelegate,ICSDrawerControllerChild, ICSDrawerControllerPresenting>
 //PARA
 @property (weak,nonatomic) IBOutlet UITableView *tableView;
 //ICSD

@@ -25,40 +25,29 @@
 #import "AppDelegate.h"
 #import "ICSDrawerController.h"
 #import "menuViewController.h"
-#import "ViewController.h"
+#import "mainViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-   /*
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor blackColor];
-    
+    NSArray *menuList = [NSArray arrayWithObjects:@"Story",@"Option",@"About",nil];
     NSArray *colors = @[[UIColor colorWithRed:237.0f/255.0f green:195.0f/255.0f blue:0.0f/255.0f alpha:1.0f],
                         [UIColor colorWithRed:237.0f/255.0f green:147.0f/255.0f blue:0.0f/255.0f alpha:1.0f],
                         [UIColor colorWithRed:237.0f/255.0f green:9.0f/255.0f blue:0.0f/255.0f alpha:1.0f]
                         ];
-
+    //初始化menuViewController
+    menuViewController *left = [[menuViewController alloc]initWithMenus:menuList andColors:colors];
+    //初始化mainviewcontroller为Storybroad中的mainCenterViewController
+    //mainViewController *center = [[mainViewController alloc]init];
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    mainViewController *center = (mainViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainCenterViewController"];
     
-    menuViewController *menuVC = [[menuViewController alloc] initWithColors:colors];
-    ViewController *mainVC = [[ViewController alloc] initWithNibName:@"Main.storyboard" bundle:nil];
-    ICSDrawerController *drawer = [[ICSDrawerController alloc] initWithLeftViewController:menuVC centerViewController:mainVC];
-    
-    self.window.rootViewController = drawer;
-    [self.window makeKeyAndVisible];
-    */
-    
-    NSArray *colors = @[[UIColor colorWithRed:237.0f/255.0f green:195.0f/255.0f blue:0.0f/255.0f alpha:1.0f],
-                        [UIColor colorWithRed:237.0f/255.0f green:147.0f/255.0f blue:0.0f/255.0f alpha:1.0f],
-                        [UIColor colorWithRed:237.0f/255.0f green:9.0f/255.0f blue:0.0f/255.0f alpha:1.0f]
-                        ];
-    
-    //Initialize menu viewcontroller
-    menuViewController *left = [[menuViewController alloc]initWithColors:colors];
-    ViewController *center = [[ViewController alloc]init];
+    //初始化drawer
     ICSDrawerController *drawer = [[ICSDrawerController alloc]initWithLeftViewController:left centerViewController:center];
+    //加载到rootViewontroller
     self.window.rootViewController = drawer;
+   
     return YES;
 }
 
