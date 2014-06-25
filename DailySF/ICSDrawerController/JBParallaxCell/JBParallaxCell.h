@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "storyViewController.h"
 
 @interface JBParallaxCell : UITableViewCell
 

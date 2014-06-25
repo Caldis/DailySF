@@ -22,6 +22,7 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.clipsToBounds = YES;
 	// Do any additional setup after loading the view, typically from a nib.
     self.tableItems = @[[UIImage imageNamed:@"demo_1.jpg"],
                         [UIImage imageNamed:@"demo_2.jpg"],
@@ -47,7 +48,7 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     [self.view addSubview:self.openDrawerButton];
     
     // 1.注册cell
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MJTableViewCellIdentifier];
+    [self.tableViewReflush registerClass:[UITableViewCell class] forCellReuseIdentifier:MJTableViewCellIdentifier];
     // 2.集成刷新控件
     [self setupRefresh];}
 
@@ -61,15 +62,18 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
 }
 
 #pragma maek - Table view data source
-//告知tableView，有多少个section需要加载到table里
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    return NO;
+}
+//有多少个section
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
-//告知tableView每个section需要加载多少行（cell）
+//每个section多少行（cell）
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.tableItems.count;
 }
-//返回UITableViewCell的实例，用于构成table view.这个函数是一定要实现的。
+//返回UITableViewCell的实例（必须）
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"parallaxCell";
     JBParallaxCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -80,15 +84,17 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
         
     return cell;
 }
+
 //ICSD
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     // Get visible cells on table view.
-    NSArray *visibleCells = [self.tableView visibleCells];
+    NSArray *visibleCells = [self.tableViewReflush visibleCells];
     
     for (JBParallaxCell *cell in visibleCells) {
-        [cell cellOnTableView:self.tableView didScrollOnView:self.view];
+        [cell cellOnTableView:self.tableViewReflush didScrollOnView:self.view];
     }
 }
+
 
 #pragma mark - Configuring the view’s layout behavior
 - (BOOL)prefersStatusBarHidden{
@@ -99,6 +105,7 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
 }
 
 #pragma mark - ICSDrawerControllerPresenting
+//是否响应用户操作
 - (void)drawerControllerWillOpen:(ICSDrawerController *)drawerController{
     self.view.userInteractionEnabled = NO;
 }
@@ -107,6 +114,7 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
 }
 
 #pragma mark - Open drawer button
+//点击菜单按钮的操作
 - (void)openDrawer:(id)sender{
     [self.drawer open];
 }
@@ -123,10 +131,10 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     // 2.2秒后刷新表格UI
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 刷新表格
-        [self.tableView reloadData];
+        [self.tableViewReflush reloadData];
         
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-        [self.tableView headerEndRefreshing];
+        [self.tableViewReflush headerEndRefreshing];
     });
 }
 //上拉刷新
@@ -139,21 +147,20 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     // 2.2秒后刷新表格UI
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 刷新表格
-        [self.tableView reloadData];
+        [self.tableViewReflush reloadData];
         
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-        [self.tableView footerEndRefreshing];
+        [self.tableViewReflush footerEndRefreshing];
     });
 }
-- (void)setupRefresh
-{
+//初始化刷新
+- (void)setupRefresh{
     // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
-    [self.tableView addHeaderWithTarget:self action:@selector(headerRefreshing)];
+    [self.tableViewReflush addHeaderWithTarget:self action:@selector(headerRefreshing)];
     //自动刷新(一进入程序就下拉刷新)
-    [self.tableView headerBeginRefreshing];
-    
+    [self.tableViewReflush headerBeginRefreshing];
     // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
-    [self.tableView addFooterWithTarget:self action:@selector(footerRefreshing)];
+    [self.tableViewReflush addFooterWithTarget:self action:@selector(footerRefreshing)];
 }
 
 @end

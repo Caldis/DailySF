@@ -28,8 +28,7 @@
 
 @implementation JBParallaxCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
@@ -37,14 +36,12 @@
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated{
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
 
-- (void)cellOnTableView:(UITableView *)tableView didScrollOnView:(UIView *)view
-{
+- (void)cellOnTableView:(UITableView *)tableView didScrollOnView:(UIView *)view{
     CGRect rectInSuperview = [tableView convertRect:self.frame toView:view];
     
     float distanceFromCenter = CGRectGetHeight(view.frame)/2 - CGRectGetMinY(rectInSuperview);
@@ -56,4 +53,11 @@
     self.parallaxImage.frame = imageRect;
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"ShowDetails"]) {
+            storyViewController *detailViewController = [segue destinationViewController];
+    }
+}
+ 
 @end

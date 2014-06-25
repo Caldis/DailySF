@@ -35,6 +35,7 @@
 		75789E831956D80400549E5D /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 75789E7A1956D80400549E5D /* UIScrollView+MJRefresh.m */; };
 		75789E841956D80400549E5D /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 75789E7C1956D80400549E5D /* UIView+Extension.m */; };
 		75789E891956E30700549E5D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75789E881956E30700549E5D /* Entitlements.plist */; };
+		75E57D921959EB9500222895 /* storyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E57D911959EB9500222895 /* storyViewController.m */; };
 		75E8CFEA1955EAD7004D7F05 /* ICSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E8CFE71955EAD7004D7F05 /* ICSDrawerController.m */; };
 		75E8CFEB1955EAD7004D7F05 /* ICSDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E8CFE91955EAD7004D7F05 /* ICSDropShadowView.m */; };
 		75E8CFEE1955EDAA004D7F05 /* menuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E8CFED1955EDAA004D7F05 /* menuViewController.m */; };
@@ -97,6 +98,8 @@
 		75789E7B1956D80400549E5D /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		75789E7C1956D80400549E5D /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		75789E881956E30700549E5D /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		75E57D901959EB9500222895 /* storyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = storyViewController.h; sourceTree = "<group>"; };
+		75E57D911959EB9500222895 /* storyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = storyViewController.m; sourceTree = "<group>"; };
 		75E8CFE61955EAD7004D7F05 /* ICSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDrawerController.h; sourceTree = "<group>"; };
 		75E8CFE71955EAD7004D7F05 /* ICSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDrawerController.m; sourceTree = "<group>"; };
 		75E8CFE81955EAD7004D7F05 /* ICSDropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDropShadowView.h; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 				75E8CFED1955EDAA004D7F05 /* menuViewController.m */,
 				755C89C41955C9FF00BA4EFF /* mainViewController.h */,
 				755C89C51955C9FF00BA4EFF /* mainViewController.m */,
+				75E57D901959EB9500222895 /* storyViewController.h */,
+				75E57D911959EB9500222895 /* storyViewController.m */,
 				75789E5D1956CADE00549E5D /* optionViewController.h */,
 				75789E5E1956CADE00549E5D /* optionViewController.m */,
 				75E8CFF61956BF68004D7F05 /* aboutViewController.h */,
@@ -423,6 +428,7 @@
 				75789E811956D80400549E5D /* MJRefreshHeaderView.m in Sources */,
 				75789E841956D80400549E5D /* UIView+Extension.m in Sources */,
 				755C89BC1955C9FF00BA4EFF /* main.m in Sources */,
+				75E57D921959EB9500222895 /* storyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
