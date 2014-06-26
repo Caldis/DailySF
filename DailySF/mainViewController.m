@@ -38,7 +38,7 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
                         [UIImage imageNamed:@"demo_4.png"]];
     
     
-    
+    //左边菜单栏
     //初始化并且添加openDrawerButton
     UIImage *hamburger = [UIImage imageNamed:@"menubuttom"];
      self.openDrawerButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -47,8 +47,9 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     [self.openDrawerButton addTarget:self action:@selector(openDrawer:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.openDrawerButton];
     
+    //下拉刷新
     // 1.注册cell
-    [self.tableViewReflush registerClass:[UITableViewCell class] forCellReuseIdentifier:MJTableViewCellIdentifier];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MJTableViewCellIdentifier];
     // 2.集成刷新控件
     [self setupRefresh];}
 
@@ -62,9 +63,11 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
 }
 
 #pragma maek - Table view data source
+/*
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
     return NO;
-}
+}*/
+
 //有多少个section
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -88,10 +91,10 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
 //ICSD
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     // Get visible cells on table view.
-    NSArray *visibleCells = [self.tableViewReflush visibleCells];
+    NSArray *visibleCells = [self.tableView visibleCells];
     
     for (JBParallaxCell *cell in visibleCells) {
-        [cell cellOnTableView:self.tableViewReflush didScrollOnView:self.view];
+        [cell cellOnTableView:self.tableView didScrollOnView:self.view];
     }
 }
 
@@ -131,10 +134,10 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     // 2.2秒后刷新表格UI
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 刷新表格
-        [self.tableViewReflush reloadData];
+        [self.tableView reloadData];
         
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-        [self.tableViewReflush headerEndRefreshing];
+        [self.tableView headerEndRefreshing];
     });
 }
 //上拉刷新
@@ -147,20 +150,20 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     // 2.2秒后刷新表格UI
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 刷新表格
-        [self.tableViewReflush reloadData];
+        [self.tableView reloadData];
         
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-        [self.tableViewReflush footerEndRefreshing];
+        [self.tableView footerEndRefreshing];
     });
 }
 //初始化刷新
 - (void)setupRefresh{
     // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
-    [self.tableViewReflush addHeaderWithTarget:self action:@selector(headerRefreshing)];
+    [self.tableView addHeaderWithTarget:self action:@selector(headerRefreshing)];
     //自动刷新(一进入程序就下拉刷新)
-    [self.tableViewReflush headerBeginRefreshing];
+    [self.tableView headerBeginRefreshing];
     // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
-    [self.tableViewReflush addFooterWithTarget:self action:@selector(footerRefreshing)];
+    [self.tableView addFooterWithTarget:self action:@selector(footerRefreshing)];
 }
 
 @end

@@ -52,12 +52,5 @@
     imageRect.origin.y = -(difference/2)+move;
     self.parallaxImage.frame = imageRect;
 }
-
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([[segue identifier] isEqualToString:@"ShowDetails"]) {
-            storyViewController *detailViewController = [segue destinationViewController];
-    }
-}
  
 @end

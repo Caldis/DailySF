@@ -13,9 +13,9 @@
 #import "storyViewController.h"
 #import "MJRefresh.h"
 
-@interface mainViewController : UIViewController <UIScrollViewDelegate,ICSDrawerControllerChild, ICSDrawerControllerPresenting>
+@interface mainViewController : UIViewController <ICSDrawerControllerChild, ICSDrawerControllerPresenting>
 //PARA
-@property (weak,nonatomic) IBOutlet UITableView *tableViewReflush;
+@property (weak,nonatomic) IBOutlet UITableView *tableView;
 //ICSD
 @property(nonatomic, weak) ICSDrawerController *drawer;
 @end
