@@ -7,25 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		753BEF30195C7E9B00FED55B /* backButtom.png in Resources */ = {isa = PBXBuildFile; fileRef = 753BEF2F195C7E9B00FED55B /* backButtom.png */; };
 		755C89B01955C9FF00BA4EFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755C89AF1955C9FF00BA4EFF /* Foundation.framework */; };
 		755C89B21955C9FF00BA4EFF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755C89B11955C9FF00BA4EFF /* CoreGraphics.framework */; };
 		755C89B41955C9FF00BA4EFF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755C89B31955C9FF00BA4EFF /* UIKit.framework */; };
 		755C89BA1955C9FF00BA4EFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755C89B81955C9FF00BA4EFF /* InfoPlist.strings */; };
 		755C89BC1955C9FF00BA4EFF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 755C89BB1955C9FF00BA4EFF /* main.m */; };
 		755C89C31955C9FF00BA4EFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755C89C11955C9FF00BA4EFF /* Main.storyboard */; };
-		755C89C61955C9FF00BA4EFF /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 755C89C51955C9FF00BA4EFF /* mainViewController.m */; };
 		755C89C81955C9FF00BA4EFF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 755C89C71955C9FF00BA4EFF /* Images.xcassets */; };
 		755C89CF1955C9FF00BA4EFF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755C89CE1955C9FF00BA4EFF /* XCTest.framework */; };
 		755C89D01955C9FF00BA4EFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755C89AF1955C9FF00BA4EFF /* Foundation.framework */; };
 		755C89D11955CA0000BA4EFF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755C89B31955C9FF00BA4EFF /* UIKit.framework */; };
 		755C89D91955CA0000BA4EFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755C89D71955CA0000BA4EFF /* InfoPlist.strings */; };
 		755C89DB1955CA0000BA4EFF /* DailySFTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 755C89DA1955CA0000BA4EFF /* DailySFTests.m */; };
-		755C89EE1955CCA500BA4EFF /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 755C89EA1955CCA500BA4EFF /* demo_1.jpg */; };
-		755C89EF1955CCA500BA4EFF /* demo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 755C89EB1955CCA500BA4EFF /* demo_2.jpg */; };
-		755C89F01955CCA500BA4EFF /* demo_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 755C89EC1955CCA500BA4EFF /* demo_3.jpg */; };
-		755C89F11955CCA500BA4EFF /* demo_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 755C89ED1955CCA500BA4EFF /* demo_4.png */; };
+		7564C8B019607B0200F5F76B /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564C8AD19607B0200F5F76B /* mainViewController.m */; };
+		7564C8B119607B0200F5F76B /* MJCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564C8AF19607B0200F5F76B /* MJCollectionViewCell.m */; };
+		7564C8C1196083DC00F5F76B /* image000.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8B3196083DC00F5F76B /* image000.jpg */; };
+		7564C8C2196083DC00F5F76B /* image001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8B4196083DC00F5F76B /* image001.jpg */; };
+		7564C8C3196083DC00F5F76B /* image002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8B5196083DC00F5F76B /* image002.jpg */; };
+		7564C8C4196083DC00F5F76B /* image003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8B6196083DC00F5F76B /* image003.jpg */; };
+		7564C8C5196083DC00F5F76B /* image004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8B7196083DC00F5F76B /* image004.jpg */; };
+		7564C8C6196083DC00F5F76B /* image005.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8B8196083DC00F5F76B /* image005.JPG */; };
+		7564C8C7196083DC00F5F76B /* image006.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8B9196083DC00F5F76B /* image006.jpg */; };
+		7564C8C8196083DC00F5F76B /* image007.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8BA196083DC00F5F76B /* image007.jpg */; };
+		7564C8C9196083DC00F5F76B /* image008.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8BB196083DC00F5F76B /* image008.jpg */; };
+		7564C8CA196083DC00F5F76B /* image009.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8BC196083DC00F5F76B /* image009.jpg */; };
+		7564C8CB196083DC00F5F76B /* image010.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8BD196083DC00F5F76B /* image010.jpg */; };
+		7564C8CC196083DC00F5F76B /* image011.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8BE196083DC00F5F76B /* image011.jpg */; };
+		7564C8CD196083DC00F5F76B /* image012.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8BF196083DC00F5F76B /* image012.jpg */; };
+		7564C8CE196083DC00F5F76B /* image013.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7564C8C0196083DC00F5F76B /* image013.jpg */; };
+		7564C8D31960979300F5F76B /* ICSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564C8D01960979300F5F76B /* ICSDrawerController.m */; };
+		7564C8D41960979300F5F76B /* ICSDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564C8D21960979300F5F76B /* ICSDropShadowView.m */; };
 		75789E5F1956CADE00549E5D /* optionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75789E5E1956CADE00549E5D /* optionViewController.m */; };
-		75789E6B1956D47000549E5D /* JBParallaxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75789E6A1956D47000549E5D /* JBParallaxCell.m */; };
 		75789E7D1956D80400549E5D /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 75789E6D1956D80400549E5D /* MJRefresh.bundle */; };
 		75789E7E1956D80400549E5D /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75789E701956D80400549E5D /* MJRefreshBaseView.m */; };
 		75789E7F1956D80400549E5D /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 75789E721956D80400549E5D /* MJRefreshConst.m */; };
@@ -35,9 +48,8 @@
 		75789E831956D80400549E5D /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 75789E7A1956D80400549E5D /* UIScrollView+MJRefresh.m */; };
 		75789E841956D80400549E5D /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 75789E7C1956D80400549E5D /* UIView+Extension.m */; };
 		75789E891956E30700549E5D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75789E881956E30700549E5D /* Entitlements.plist */; };
+		75963785195C9D5D00266789 /* downButtom.png in Resources */ = {isa = PBXBuildFile; fileRef = 75963784195C9D5D00266789 /* downButtom.png */; };
 		75E57D921959EB9500222895 /* storyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E57D911959EB9500222895 /* storyViewController.m */; };
-		75E8CFEA1955EAD7004D7F05 /* ICSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E8CFE71955EAD7004D7F05 /* ICSDrawerController.m */; };
-		75E8CFEB1955EAD7004D7F05 /* ICSDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E8CFE91955EAD7004D7F05 /* ICSDropShadowView.m */; };
 		75E8CFEE1955EDAA004D7F05 /* menuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E8CFED1955EDAA004D7F05 /* menuViewController.m */; };
 		75E8CFF11955F1FE004D7F05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E8CFF01955F1FE004D7F05 /* AppDelegate.m */; };
 		75E8CFF31955F7F6004D7F05 /* menubuttom.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E8CFF21955F7F6004D7F05 /* menubuttom.png */; };
@@ -56,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		753BEF2F195C7E9B00FED55B /* backButtom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButtom.png; sourceTree = "<group>"; };
 		755C89AC1955C9FF00BA4EFF /* DailySF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailySF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		755C89AF1955C9FF00BA4EFF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		755C89B11955C9FF00BA4EFF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,22 +78,36 @@
 		755C89BB1955C9FF00BA4EFF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		755C89BD1955C9FF00BA4EFF /* DailySF-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DailySF-Prefix.pch"; sourceTree = "<group>"; };
 		755C89C21955C9FF00BA4EFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		755C89C41955C9FF00BA4EFF /* mainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
-		755C89C51955C9FF00BA4EFF /* mainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
 		755C89C71955C9FF00BA4EFF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		755C89CD1955C9FF00BA4EFF /* DailySFTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailySFTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		755C89CE1955C9FF00BA4EFF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		755C89D61955CA0000BA4EFF /* DailySFTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DailySFTests-Info.plist"; sourceTree = "<group>"; };
 		755C89D81955CA0000BA4EFF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		755C89DA1955CA0000BA4EFF /* DailySFTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailySFTests.m; sourceTree = "<group>"; };
-		755C89EA1955CCA500BA4EFF /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
-		755C89EB1955CCA500BA4EFF /* demo_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_2.jpg; sourceTree = "<group>"; };
-		755C89EC1955CCA500BA4EFF /* demo_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_3.jpg; sourceTree = "<group>"; };
-		755C89ED1955CCA500BA4EFF /* demo_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demo_4.png; sourceTree = "<group>"; };
+		7564C8AC19607B0200F5F76B /* mainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
+		7564C8AD19607B0200F5F76B /* mainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
+		7564C8AE19607B0200F5F76B /* MJCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJCollectionViewCell.h; sourceTree = "<group>"; };
+		7564C8AF19607B0200F5F76B /* MJCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJCollectionViewCell.m; sourceTree = "<group>"; };
+		7564C8B3196083DC00F5F76B /* image000.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image000.jpg; sourceTree = "<group>"; };
+		7564C8B4196083DC00F5F76B /* image001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image001.jpg; sourceTree = "<group>"; };
+		7564C8B5196083DC00F5F76B /* image002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image002.jpg; sourceTree = "<group>"; };
+		7564C8B6196083DC00F5F76B /* image003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image003.jpg; sourceTree = "<group>"; };
+		7564C8B7196083DC00F5F76B /* image004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image004.jpg; sourceTree = "<group>"; };
+		7564C8B8196083DC00F5F76B /* image005.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image005.JPG; sourceTree = "<group>"; };
+		7564C8B9196083DC00F5F76B /* image006.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image006.jpg; sourceTree = "<group>"; };
+		7564C8BA196083DC00F5F76B /* image007.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image007.jpg; sourceTree = "<group>"; };
+		7564C8BB196083DC00F5F76B /* image008.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image008.jpg; sourceTree = "<group>"; };
+		7564C8BC196083DC00F5F76B /* image009.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image009.jpg; sourceTree = "<group>"; };
+		7564C8BD196083DC00F5F76B /* image010.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image010.jpg; sourceTree = "<group>"; };
+		7564C8BE196083DC00F5F76B /* image011.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image011.jpg; sourceTree = "<group>"; };
+		7564C8BF196083DC00F5F76B /* image012.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image012.jpg; sourceTree = "<group>"; };
+		7564C8C0196083DC00F5F76B /* image013.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image013.jpg; sourceTree = "<group>"; };
+		7564C8CF1960979300F5F76B /* ICSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDrawerController.h; sourceTree = "<group>"; };
+		7564C8D01960979300F5F76B /* ICSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDrawerController.m; sourceTree = "<group>"; };
+		7564C8D11960979300F5F76B /* ICSDropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDropShadowView.h; sourceTree = "<group>"; };
+		7564C8D21960979300F5F76B /* ICSDropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDropShadowView.m; sourceTree = "<group>"; };
 		75789E5D1956CADE00549E5D /* optionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optionViewController.h; sourceTree = "<group>"; };
 		75789E5E1956CADE00549E5D /* optionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = optionViewController.m; sourceTree = "<group>"; };
-		75789E691956D47000549E5D /* JBParallaxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBParallaxCell.h; sourceTree = "<group>"; };
-		75789E6A1956D47000549E5D /* JBParallaxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBParallaxCell.m; sourceTree = "<group>"; };
 		75789E6D1956D80400549E5D /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		75789E6E1956D80400549E5D /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		75789E6F1956D80400549E5D /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -98,12 +125,9 @@
 		75789E7B1956D80400549E5D /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		75789E7C1956D80400549E5D /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		75789E881956E30700549E5D /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		75963784195C9D5D00266789 /* downButtom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downButtom.png; sourceTree = "<group>"; };
 		75E57D901959EB9500222895 /* storyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = storyViewController.h; sourceTree = "<group>"; };
 		75E57D911959EB9500222895 /* storyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = storyViewController.m; sourceTree = "<group>"; };
-		75E8CFE61955EAD7004D7F05 /* ICSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDrawerController.h; sourceTree = "<group>"; };
-		75E8CFE71955EAD7004D7F05 /* ICSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDrawerController.m; sourceTree = "<group>"; };
-		75E8CFE81955EAD7004D7F05 /* ICSDropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDropShadowView.h; sourceTree = "<group>"; };
-		75E8CFE91955EAD7004D7F05 /* ICSDropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDropShadowView.m; sourceTree = "<group>"; };
 		75E8CFEC1955EDAA004D7F05 /* menuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menuViewController.h; sourceTree = "<group>"; };
 		75E8CFED1955EDAA004D7F05 /* menuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = menuViewController.m; sourceTree = "<group>"; };
 		75E8CFEF1955F1FE004D7F05 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -176,8 +200,10 @@
 				75E8CFF01955F1FE004D7F05 /* AppDelegate.m */,
 				75E8CFEC1955EDAA004D7F05 /* menuViewController.h */,
 				75E8CFED1955EDAA004D7F05 /* menuViewController.m */,
-				755C89C41955C9FF00BA4EFF /* mainViewController.h */,
-				755C89C51955C9FF00BA4EFF /* mainViewController.m */,
+				7564C8AC19607B0200F5F76B /* mainViewController.h */,
+				7564C8AD19607B0200F5F76B /* mainViewController.m */,
+				7564C8AE19607B0200F5F76B /* MJCollectionViewCell.h */,
+				7564C8AF19607B0200F5F76B /* MJCollectionViewCell.m */,
 				75E57D901959EB9500222895 /* storyViewController.h */,
 				75E57D911959EB9500222895 /* storyViewController.m */,
 				75789E5D1956CADE00549E5D /* optionViewController.h */,
@@ -225,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				75789E6C1956D80400549E5D /* MJRefresh */,
-				75789E681956D47000549E5D /* JBParallaxCell */,
 				75E8CFE51955EAD7004D7F05 /* ICSDrawerController */,
 			);
 			name = API;
@@ -235,24 +260,35 @@
 			isa = PBXGroup;
 			children = (
 				755C89C71955C9FF00BA4EFF /* Images.xcassets */,
+				7564C8B2196083DC00F5F76B /* Sample Images */,
 				75E8CFF419560309004D7F05 /* bg.png */,
+				753BEF2F195C7E9B00FED55B /* backButtom.png */,
+				75963784195C9D5D00266789 /* downButtom.png */,
 				75E8CFF21955F7F6004D7F05 /* menubuttom.png */,
-				755C89EA1955CCA500BA4EFF /* demo_1.jpg */,
-				755C89EB1955CCA500BA4EFF /* demo_2.jpg */,
-				755C89EC1955CCA500BA4EFF /* demo_3.jpg */,
-				755C89ED1955CCA500BA4EFF /* demo_4.png */,
 			);
 			name = Media;
 			sourceTree = "<group>";
 		};
-		75789E681956D47000549E5D /* JBParallaxCell */ = {
+		7564C8B2196083DC00F5F76B /* Sample Images */ = {
 			isa = PBXGroup;
 			children = (
-				75789E691956D47000549E5D /* JBParallaxCell.h */,
-				75789E6A1956D47000549E5D /* JBParallaxCell.m */,
+				7564C8B3196083DC00F5F76B /* image000.jpg */,
+				7564C8B4196083DC00F5F76B /* image001.jpg */,
+				7564C8B5196083DC00F5F76B /* image002.jpg */,
+				7564C8B6196083DC00F5F76B /* image003.jpg */,
+				7564C8B7196083DC00F5F76B /* image004.jpg */,
+				7564C8B8196083DC00F5F76B /* image005.JPG */,
+				7564C8B9196083DC00F5F76B /* image006.jpg */,
+				7564C8BA196083DC00F5F76B /* image007.jpg */,
+				7564C8BB196083DC00F5F76B /* image008.jpg */,
+				7564C8BC196083DC00F5F76B /* image009.jpg */,
+				7564C8BD196083DC00F5F76B /* image010.jpg */,
+				7564C8BE196083DC00F5F76B /* image011.jpg */,
+				7564C8BF196083DC00F5F76B /* image012.jpg */,
+				7564C8C0196083DC00F5F76B /* image013.jpg */,
 			);
-			name = JBParallaxCell;
-			path = ICSDrawerController/JBParallaxCell;
+			name = "Sample Images";
+			path = "../../../../../../Downloads/MJParallaxCollectionView-master/ParallaxImages/Sample Images";
 			sourceTree = "<group>";
 		};
 		75789E6C1956D80400549E5D /* MJRefresh */ = {
@@ -281,10 +317,10 @@
 		75E8CFE51955EAD7004D7F05 /* ICSDrawerController */ = {
 			isa = PBXGroup;
 			children = (
-				75E8CFE61955EAD7004D7F05 /* ICSDrawerController.h */,
-				75E8CFE71955EAD7004D7F05 /* ICSDrawerController.m */,
-				75E8CFE81955EAD7004D7F05 /* ICSDropShadowView.h */,
-				75E8CFE91955EAD7004D7F05 /* ICSDropShadowView.m */,
+				7564C8CF1960979300F5F76B /* ICSDrawerController.h */,
+				7564C8D01960979300F5F76B /* ICSDrawerController.m */,
+				7564C8D11960979300F5F76B /* ICSDropShadowView.h */,
+				7564C8D21960979300F5F76B /* ICSDropShadowView.m */,
 			);
 			path = ICSDrawerController;
 			sourceTree = "<group>";
@@ -366,17 +402,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7564C8C3196083DC00F5F76B /* image002.jpg in Resources */,
+				7564C8C4196083DC00F5F76B /* image003.jpg in Resources */,
 				75789E891956E30700549E5D /* Entitlements.plist in Resources */,
+				7564C8CD196083DC00F5F76B /* image012.jpg in Resources */,
 				755C89C81955C9FF00BA4EFF /* Images.xcassets in Resources */,
-				755C89F11955CCA500BA4EFF /* demo_4.png in Resources */,
+				7564C8C2196083DC00F5F76B /* image001.jpg in Resources */,
+				7564C8C9196083DC00F5F76B /* image008.jpg in Resources */,
 				75E8CFF519560309004D7F05 /* bg.png in Resources */,
 				755C89BA1955C9FF00BA4EFF /* InfoPlist.strings in Resources */,
-				755C89EE1955CCA500BA4EFF /* demo_1.jpg in Resources */,
-				755C89EF1955CCA500BA4EFF /* demo_2.jpg in Resources */,
+				7564C8C5196083DC00F5F76B /* image004.jpg in Resources */,
+				753BEF30195C7E9B00FED55B /* backButtom.png in Resources */,
+				7564C8C7196083DC00F5F76B /* image006.jpg in Resources */,
+				75963785195C9D5D00266789 /* downButtom.png in Resources */,
 				75E8CFF31955F7F6004D7F05 /* menubuttom.png in Resources */,
-				755C89F01955CCA500BA4EFF /* demo_3.jpg in Resources */,
+				7564C8CE196083DC00F5F76B /* image013.jpg in Resources */,
+				7564C8C1196083DC00F5F76B /* image000.jpg in Resources */,
+				7564C8CC196083DC00F5F76B /* image011.jpg in Resources */,
+				7564C8C8196083DC00F5F76B /* image007.jpg in Resources */,
+				7564C8CA196083DC00F5F76B /* image009.jpg in Resources */,
 				75789E7D1956D80400549E5D /* MJRefresh.bundle in Resources */,
 				755C89C31955C9FF00BA4EFF /* Main.storyboard in Resources */,
+				7564C8C6196083DC00F5F76B /* image005.JPG in Resources */,
+				7564C8CB196083DC00F5F76B /* image010.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,19 +462,19 @@
 			files = (
 				75789E801956D80400549E5D /* MJRefreshFooterView.m in Sources */,
 				75789E821956D80400549E5D /* UIScrollView+Extension.m in Sources */,
-				75789E6B1956D47000549E5D /* JBParallaxCell.m in Sources */,
-				755C89C61955C9FF00BA4EFF /* mainViewController.m in Sources */,
 				75E8CFF81956BF68004D7F05 /* aboutViewController.m in Sources */,
-				75E8CFEB1955EAD7004D7F05 /* ICSDropShadowView.m in Sources */,
-				75E8CFEA1955EAD7004D7F05 /* ICSDrawerController.m in Sources */,
 				75E8CFEE1955EDAA004D7F05 /* menuViewController.m in Sources */,
 				75789E831956D80400549E5D /* UIScrollView+MJRefresh.m in Sources */,
+				7564C8B019607B0200F5F76B /* mainViewController.m in Sources */,
 				75E8CFF11955F1FE004D7F05 /* AppDelegate.m in Sources */,
 				75789E5F1956CADE00549E5D /* optionViewController.m in Sources */,
+				7564C8D31960979300F5F76B /* ICSDrawerController.m in Sources */,
 				75789E7F1956D80400549E5D /* MJRefreshConst.m in Sources */,
 				75789E7E1956D80400549E5D /* MJRefreshBaseView.m in Sources */,
 				75789E811956D80400549E5D /* MJRefreshHeaderView.m in Sources */,
 				75789E841956D80400549E5D /* UIView+Extension.m in Sources */,
+				7564C8B119607B0200F5F76B /* MJCollectionViewCell.m in Sources */,
+				7564C8D41960979300F5F76B /* ICSDropShadowView.m in Sources */,
 				755C89BC1955C9FF00BA4EFF /* main.m in Sources */,
 				75E57D921959EB9500222895 /* storyViewController.m in Sources */,
 			);

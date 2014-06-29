@@ -61,7 +61,7 @@
     ICSDrawerController *drawer = [[ICSDrawerController alloc] initWithLeftViewController:left
                                                                      centerViewController:center];
  */
-@interface ICSDrawerController : UIViewController
+@interface ICSDrawerController : UINavigationController
 
 /**
  @name Child controllers

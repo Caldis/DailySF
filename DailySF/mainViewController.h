@@ -1,21 +1,18 @@
 //
-//  ViewController.h
-//  DailySF
+//  MJViewController.h
+//  ParallaxImages
 //
-//  Created by 陈标 on 6/21/14.
-//  Copyright (c) 2014 Cb. All rights reserved.
+//  Created by Mayur on 4/1/14.
+//  Copyright (c) 2014 sky. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "JBParallaxCell.h"
 #import "ICSDrawerController.h"
 #import "menuViewController.h"
 #import "storyViewController.h"
 #import "MJRefresh.h"
 
 @interface mainViewController : UIViewController <ICSDrawerControllerChild, ICSDrawerControllerPresenting>
-//PARA
-@property (weak,nonatomic) IBOutlet UITableView *tableView;
 //ICSD
 @property(nonatomic, weak) ICSDrawerController *drawer;
 @end

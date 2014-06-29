@@ -10,4 +10,20 @@
 
 @implementation storyViewController
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    //初始化并且添加openDrawerButton
+    UIImage *hamburger = [UIImage imageNamed:@"backbuttom"];
+    self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.backButton.frame = CGRectMake(10.0f, 22.0f, 35.0f, 35.0f);
+    [self.backButton setImage:hamburger forState:UIControlStateNormal];
+    [self.backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.backButton];
+}
+
+- (void)back:(id)sender{
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 @end

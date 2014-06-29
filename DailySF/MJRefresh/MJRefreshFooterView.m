@@ -124,7 +124,7 @@
 		case MJRefreshStateNormal:
         {
             // 设置文字
-            self.statusLabel.text = MJRefreshFooterPullToRefresh;
+            //self.statusLabel.text = MJRefreshFooterPullToRefresh;
             
             // 刷新完毕
             if (MJRefreshStateRefreshing == oldState) {
@@ -151,7 +151,7 @@
 		case MJRefreshStatePulling:
         {
             // 设置文字
-            self.statusLabel.text = MJRefreshFooterReleaseToRefresh;
+            //self.statusLabel.text = MJRefreshFooterReleaseToRefresh;
             
             [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
                 self.arrowImage.transform = CGAffineTransformIdentity;
@@ -162,7 +162,7 @@
         case MJRefreshStateRefreshing:
         {
             // 设置文字
-            self.statusLabel.text = MJRefreshFooterRefreshing;
+            //self.statusLabel.text = MJRefreshFooterRefreshing;
             
             // 记录刷新前的数量
             self.lastRefreshCount = [self totalDataCountInScrollView];

@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ICSDrawerController.h"
 
-@interface storyViewController : UIViewController
+@interface storyViewController : UIViewController <ICSDrawerControllerPresenting>
 
 @property (strong, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *DescriptionLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *ImageView;
 @property (strong, nonatomic) NSArray *DetailModal;
+
+@property (strong, nonatomic) UIButton *backButton;
 
 @end

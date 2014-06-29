@@ -41,7 +41,7 @@
     //初始化mainviewcontroller为Storybroad中的mainCenterViewController
     //mainViewController *center = [[mainViewController alloc]init];
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    mainViewController *center = (mainViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainCenterViewController"];
+    mainViewController *center = (mainViewController *)[storyboard instantiateInitialViewController];
     
     //初始化drawer
     ICSDrawerController *drawer = [[ICSDrawerController alloc]initWithLeftViewController:left centerViewController:center];

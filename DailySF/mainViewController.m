@@ -1,18 +1,18 @@
 //
-//  ViewController.m
-//  DailySF
+//  MJViewController.m
+//  ParallaxImages
 //
-//  Created by 陈标 on 6/21/14.
-//  Copyright (c) 2014 Cb. All rights reserved.
+//  Created by Mayur on 4/1/14.
+//  Copyright (c) 2014 sky. All rights reserved.
 //
 
 #import "mainViewController.h"
+#import "MJCollectionViewCell.h"
 
-NSString *const MJTableViewCellIdentifier = @"Cell";
+@interface mainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout>
 
-@interface mainViewController ()
-//PARA
-@property (strong,nonatomic) NSArray *tableItems;
+@property (weak, nonatomic) IBOutlet UICollectionView *parallaxCollectionView;
+@property (nonatomic, strong) NSMutableArray* images;
 //ICSD
 @property(nonatomic, strong) UIButton *openDrawerButton;
 @end
@@ -22,87 +22,77 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.clipsToBounds = YES;
 	// Do any additional setup after loading the view, typically from a nib.
-    self.tableItems = @[[UIImage imageNamed:@"demo_1.jpg"],
-                        [UIImage imageNamed:@"demo_2.jpg"],
-                        [UIImage imageNamed:@"demo_3.jpg"],
-                        [UIImage imageNamed:@"demo_4.png"],
-                        [UIImage imageNamed:@"demo_1.jpg"],
-                        [UIImage imageNamed:@"demo_2.jpg"],
-                        [UIImage imageNamed:@"demo_3.jpg"],
-                        [UIImage imageNamed:@"demo_4.png"],
-                        [UIImage imageNamed:@"demo_3.jpg"],
-                        [UIImage imageNamed:@"demo_2.jpg"],
-                        [UIImage imageNamed:@"demo_1.jpg"],
-                        [UIImage imageNamed:@"demo_4.png"]];
     
+    // Fill image array with images
+    NSUInteger index;
+    for (index = 0; index < 14; ++index) {
+        // Setup image name
+        NSString *name = [NSString stringWithFormat:@"image%03ld.jpg", (unsigned long)index];
+        if(!self.images)
+            self.images = [NSMutableArray arrayWithCapacity:0];
+        [self.images addObject:name];
+    }
+    [self.parallaxCollectionView reloadData];
     
     //左边菜单栏
     //初始化并且添加openDrawerButton
     UIImage *hamburger = [UIImage imageNamed:@"menubuttom"];
-     self.openDrawerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-     self.openDrawerButton.frame = CGRectMake(10.0f, 28.0f, 44.0f, 44.0f);
+    self.openDrawerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.openDrawerButton.frame = CGRectMake(10.0f, 18.0f, 44.0f, 44.0f);
     [self.openDrawerButton setImage:hamburger forState:UIControlStateNormal];
     [self.openDrawerButton addTarget:self action:@selector(openDrawer:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.openDrawerButton];
     
     //下拉刷新
     // 1.注册cell
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MJTableViewCellIdentifier];
+    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MJTableViewCellIdentifier];
     // 2.集成刷新控件
-    [self setupRefresh];}
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self scrollViewDidScroll:nil];
+    //[self setupRefresh];
 }
-- (void)didReceiveMemoryWarning{
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma maek - Table view data source
-/*
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
-    return NO;
-}*/
+#pragma mark - UICollectionViewDatasource Methods
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.images.count;
+}
 
-//有多少个section
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-//每个section多少行（cell）
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.tableItems.count;
-}
-//返回UITableViewCell的实例（必须）
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdentifier = @"parallaxCell";
-    JBParallaxCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    MJCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MJCell" forIndexPath:indexPath];
     
-    cell.titleLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Cell %d",), indexPath.row];
-    cell.subtitleLabel.text = [NSString stringWithFormat:NSLocalizedString(@"This is a parallex cell %d",),indexPath.row];
-    cell.parallaxImage.image = self.tableItems[indexPath.row];
-        
+    //get image name and assign
+    NSString* imageName = [self.images objectAtIndex:indexPath.item];
+    cell.image = [UIImage imageNamed:imageName];
+    
+    //set offset accordingly
+    CGFloat yOffset = ((self.parallaxCollectionView.contentOffset.y - cell.frame.origin.y) / IMAGE_HEIGHT) * IMAGE_OFFSET_SPEED;
+    cell.imageOffset = CGPointMake(0.0f, yOffset);
+
     return cell;
 }
 
-//ICSD
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    // Get visible cells on table view.
-    NSArray *visibleCells = [self.tableView visibleCells];
-    
-    for (JBParallaxCell *cell in visibleCells) {
-        [cell cellOnTableView:self.tableView didScrollOnView:self.view];
+#pragma mark - UIScrollViewdelegate methods
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    for(MJCollectionViewCell *view in self.parallaxCollectionView.visibleCells) {
+        CGFloat yOffset = ((self.parallaxCollectionView.contentOffset.y - view.frame.origin.y) / IMAGE_HEIGHT) * IMAGE_OFFSET_SPEED;
+        view.imageOffset = CGPointMake(0.0f, yOffset);
     }
 }
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    return 0;
+}
 
 #pragma mark - Configuring the view’s layout behavior
 - (BOOL)prefersStatusBarHidden{
     return NO;
-}
+ }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
@@ -110,10 +100,24 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
 #pragma mark - ICSDrawerControllerPresenting
 //是否响应用户操作
 - (void)drawerControllerWillOpen:(ICSDrawerController *)drawerController{
+    self.view.userInteractionEnabled = YES;
+    self.openDrawerButton.userInteractionEnabled = YES;
+    NSLog(@"aaa");
+}
+- (void)drawerControllerDidOpen:(ICSDrawerController *)drawerController{
     self.view.userInteractionEnabled = NO;
+    self.openDrawerButton.userInteractionEnabled = NO;
+    NSLog(@"bbb");
+}
+- (void)drawerControllerWillClose:(ICSDrawerController *)drawerController{
+    self.view.userInteractionEnabled = NO;
+    self.openDrawerButton.userInteractionEnabled = NO;
+    NSLog(@"ccc");
 }
 - (void)drawerControllerDidClose:(ICSDrawerController *)drawerController{
     self.view.userInteractionEnabled = YES;
+    self.openDrawerButton.userInteractionEnabled = YES;
+    NSLog(@"ddd");
 }
 
 #pragma mark - Open drawer button
@@ -122,48 +126,5 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     [self.drawer open];
 }
 
-
-#pragma mark - Start to refresh
-//下拉刷新
-- (void)headerRefreshing{
-    // 1.添加假数据
-    for (int i = 0; i<5; i++) {
-        //[self.fakeData insertObject:MJRandomData atIndex:0];
-    }
-    
-    // 2.2秒后刷新表格UI
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // 刷新表格
-        [self.tableView reloadData];
-        
-        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-        [self.tableView headerEndRefreshing];
-    });
-}
-//上拉刷新
-- (void)footerRefreshing{
-    // 1.添加假数据
-    for (int i = 0; i<5; i++) {
-        //[self.fakeData addObject:MJRandomData];
-    }
-    
-    // 2.2秒后刷新表格UI
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // 刷新表格
-        [self.tableView reloadData];
-        
-        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-        [self.tableView footerEndRefreshing];
-    });
-}
-//初始化刷新
-- (void)setupRefresh{
-    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
-    [self.tableView addHeaderWithTarget:self action:@selector(headerRefreshing)];
-    //自动刷新(一进入程序就下拉刷新)
-    [self.tableView headerBeginRefreshing];
-    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
-    [self.tableView addFooterWithTarget:self action:@selector(footerRefreshing)];
-}
 
 @end

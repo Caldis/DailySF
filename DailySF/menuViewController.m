@@ -104,7 +104,7 @@ static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCo
 {
     if (indexPath.row == self.previousRow) {
         // Close the drawer without no further actions on the center view controller
-        // 关闭drawer而不用CenterViewController实施进一步的工作
+        // 关闭drawer
         [self.drawer close];
     }
     else {
@@ -113,7 +113,7 @@ static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCo
                 //Replace the current center view controller with a new one
                 //替换当前的CenterViewController为Storybroad中的mainCenterViewController
                 UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-                mainViewController *center = (mainViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainCenterViewController"];
+                mainViewController *center = (mainViewController *)[storyboard instantiateInitialViewController];
                 [self.drawer replaceCenterViewControllerWithViewController:center];
                 break;
             }
