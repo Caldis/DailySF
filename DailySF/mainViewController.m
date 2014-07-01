@@ -24,6 +24,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    //页面标示符
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    delegate.viewPage = (NSInteger *)0;
+    
     // Fill image array with images
     NSUInteger index;
     for (index = 0; index < 14; ++index) {

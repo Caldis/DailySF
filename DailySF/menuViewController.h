@@ -10,7 +10,7 @@
 
 @interface menuViewController : UITableViewController <ICSDrawerControllerChild, ICSDrawerControllerPresenting>
 
-@property(nonatomic, weak) ICSDrawerController *drawer;
+@property(nonatomic, weak)   ICSDrawerController *drawer;
 
 - (id)initWithColors:(NSArray *)colors;
 - (id)initWithMenus:(NSArray *)menuList andColors:(NSArray *)colors;

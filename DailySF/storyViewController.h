@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 #import "ICSDrawerController.h"
+#import "mainViewController.h"
 
 @interface storyViewController : UIViewController <ICSDrawerControllerPresenting>
 

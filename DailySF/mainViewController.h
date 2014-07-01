@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 #import "ICSDrawerController.h"
 #import "menuViewController.h"
 #import "storyViewController.h"
@@ -15,4 +16,5 @@
 @interface mainViewController : UIViewController <ICSDrawerControllerChild, ICSDrawerControllerPresenting>
 //ICSD
 @property(nonatomic, weak) ICSDrawerController *drawer;
+
 @end
