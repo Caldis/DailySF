@@ -11,21 +11,21 @@
 @interface MJCollectionViewCell()
 
 @property (nonatomic, strong, readwrite) UIImageView *MJImageView;
+@property (nonatomic, strong, readwrite) UILabel     *storyTitle;
 
 @end
 
 @implementation MJCollectionViewCell
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    if (self) [self setupImageView];
+    if (self) [self setupCellView];
     return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    if (self) [self setupImageView];
+    if (self) [self setupCellView];
     return self;
 }
 
@@ -39,8 +39,7 @@
 */
 
 #pragma mark - Setup Method
-- (void)setupImageView
-{
+- (void)setupCellView {
     // Clip subviews
     self.clipsToBounds = YES;
     
@@ -50,28 +49,36 @@
     self.MJImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.MJImageView.clipsToBounds = NO;
     [self addSubview:self.MJImageView];
+    
+    // Add title Label
+    self.storyTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 82, 300, 30)];
+    //self.storyTitle.text = @"Title";
+    self.storyTitle.backgroundColor = [UIColor clearColor];
+    self.storyTitle.textColor = [UIColor whiteColor];
+    self.storyTitle.font = [UIFont fontWithName:@"Arial" size:22];
+    [self addSubview:self.storyTitle];
 }
 
 # pragma mark - Setters
-
-- (void)setImage:(UIImage *)image
-{
+- (void)setImage:(UIImage *)image {
     // Store image
     self.MJImageView.image = image;
-    
     // Update padding
     [self setImageOffset:self.imageOffset];
 }
 
-- (void)setImageOffset:(CGPoint)imageOffset
-{
+- (void)setImageOffset:(CGPoint)imageOffset {
     // Store padding value
     _imageOffset = imageOffset;
-    
     // Grow image view
     CGRect frame = self.MJImageView.bounds;
     CGRect offsetFrame = CGRectOffset(frame, _imageOffset.x, _imageOffset.y);
     self.MJImageView.frame = offsetFrame;
+}
+
+- (void)setTitle:(NSString *)title {
+    self.storyTitle.text = title;
+    NSLog(@"title in Cell is : %@",title);
 }
 
 @end

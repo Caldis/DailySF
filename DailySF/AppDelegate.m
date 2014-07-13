@@ -47,6 +47,10 @@
     ICSDrawerController *drawer = [[ICSDrawerController alloc]initWithLeftViewController:left centerViewController:center];
     //加载到rootViewontroller
     self.window.rootViewController = drawer;
+    
+    //AVOS框架ID初始化
+    [AVOSCloud setApplicationId:@"fxvsd7bh3xhyygb8z5ey2rlb3e6q0616e5dx22m2mnylzf3b" clientKey:@"e39w32lt2kctjsrapw9607xt9dyvajnfwmrwqhyto1i6cse9"];
+    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
    
     return YES;
 }

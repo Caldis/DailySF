@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVOSCloud/AVOSCloud.h>
 #import "AppDelegate.h"
 #import "ICSDrawerController.h"
 #import "menuViewController.h"

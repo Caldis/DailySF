@@ -17,7 +17,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *DescriptionLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *ImageView;
 @property (strong, nonatomic) NSArray *DetailModal;
-
 @property (strong, nonatomic) UIButton *backButton;
+
+@property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 
 @end

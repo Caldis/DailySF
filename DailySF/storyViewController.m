@@ -29,8 +29,7 @@ int viewDidLoad = 0;
     viewDidLoad = 1;
 }
 
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     if (viewDidLoad)
         return YES;
     else
@@ -45,6 +44,7 @@ int viewDidLoad = 0;
     [super viewDidDisappear:animated];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     delegate.viewPage = (NSInteger *)0;
+    viewDidLoad = 0;
 }
 
 @end
