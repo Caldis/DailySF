@@ -36,7 +36,7 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="yln-89-G4x" kind="push" id="CC0-zY-exU"/>
+                                            <segue destination="yln-89-G4x" kind="push" identifier="pushToStory" id="CC0-zY-exU"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -69,12 +69,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QWh-P4-0Yy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1558" y="-530"/>
+            <point key="canvasLocation" x="-1864" y="-592"/>
         </scene>
         <!--Story View Controller - Title-->
         <scene sceneID="GsQ-uh-hs1">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="yln-89-G4x" customClass="storyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="storyViewController" hidesBottomBarWhenPushed="YES" id="yln-89-G4x" customClass="storyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bfH-Cq-O4l"/>
                         <viewControllerLayoutGuide type="bottom" id="FEw-Qn-ZKY"/>
@@ -83,14 +83,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="storyDatailBar" translatesAutoresizingMaskIntoConstraints="NO" id="QVJ-v6-BtV">
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYt-1U-nLL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                            <view alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QVJ-v6-BtV">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Story" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0B-hM-vdu">
-                                        <rect key="frame" x="116" y="22" width="89" height="36"/>
+                                        <rect key="frame" x="71" y="20" width="178" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -103,10 +108,14 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Title" id="yjM-aJ-ZBO"/>
                     <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="storyTitleLabel" destination="g0B-hM-vdu" id="MwN-5c-Tsw"/>
+                        <outlet property="storyWebView" destination="bYt-1U-nLL" id="sd6-ls-G6l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZ0-1E-aN3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1109" y="-530"/>
+            <point key="canvasLocation" x="-1415" y="-592"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="PLE-7u-4Ur">
@@ -147,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="onc-8x-jRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2084" y="159"/>
+            <point key="canvasLocation" x="-1415" y="113"/>
         </scene>
         <!--Option View Controller-->
         <scene sceneID="nPc-fe-IZf">
@@ -187,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWR-B3-fDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2084" y="-1220"/>
+            <point key="canvasLocation" x="-1415" y="-1286"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FXLabel.h"
 #define IMAGE_HEIGHT 220
 #define IMAGE_OFFSET_SPEED 25
 
@@ -27,6 +28,11 @@
  title used in the cell
  */
 @property (nonatomic, strong ,readwrite) NSString *title;
+
+/*
+ describe used in the cell
+ */
+@property (nonatomic, strong ,readwrite) NSString *describe;
 
 
 @end

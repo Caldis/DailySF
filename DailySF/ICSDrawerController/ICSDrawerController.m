@@ -25,8 +25,8 @@
 #import "ICSDrawerController.h"
 #import "ICSDropShadowView.h"
 
-static const CGFloat kICSDrawerControllerDrawerDepth = 260.0f;
-static const CGFloat kICSDrawerControllerLeftViewInitialOffset = -60.0f;
+static const CGFloat kICSDrawerControllerDrawerDepth = 160.0f;
+static const CGFloat kICSDrawerControllerLeftViewInitialOffset = -90.0f;
 static const NSTimeInterval kICSDrawerControllerAnimationDuration = 0.5;
 static const CGFloat kICSDrawerControllerOpeningAnimationSpringDamping = 0.7f;
 static const CGFloat kICSDrawerControllerOpeningAnimationSpringInitialVelocity = 0.1f;
@@ -117,6 +117,8 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
     [self addCenterViewController];
 
     [self setupGestureRecognizers];
+    
+    self.interactivePopGestureRecognizer.enabled = NO;
 }
 
 #pragma mark - Configuring the view’s layout behavior
@@ -188,13 +190,12 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
     CGPoint velocity = [(UIPanGestureRecognizer *)gestureRecognizer velocityInView:self.view];
 
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    if ((self.drawerState == ICSDrawerControllerStateClosed && velocity.x > 0.0f)&&!(delegate.viewPage)) {
+    if ((self.drawerState == ICSDrawerControllerStateClosed && velocity.x > 0.0f) && delegate.inMainViewController) {
         return YES;
     }
-    else if ((self.drawerState == ICSDrawerControllerStateOpen && velocity.x < 0.0f)&&!(delegate.viewPage)) {
+    else if ((self.drawerState == ICSDrawerControllerStateOpen && velocity.x < 0.0f) && delegate.inMainViewController) {
         return YES;
     }
-    
     return NO;
 }
 
@@ -206,6 +207,11 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
     UIGestureRecognizerState state = panGestureRecognizer.state;
     CGPoint location = [panGestureRecognizer locationInView:self.view];
     CGPoint velocity = [panGestureRecognizer velocityInView:self.view];
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    if([self respondsToSelector:@selector(interactivePopGestureRecognizer)] && delegate.inMainViewController){
+        self.interactivePopGestureRecognizer.enabled = NO;
+    }
     
     switch (state) {
 

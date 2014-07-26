@@ -25,7 +25,12 @@
 #import "ICSDropShadowView.h"
 
 @implementation ICSDropShadowView
-
+#ifdef _FOR_DEBUG_
+-(BOOL) respondsToSelector:(SEL)aSelector {
+    printf("SELECTOR: %s\n", [NSStringFromSelector(aSelector) UTF8String]);
+    return [super respondsToSelector:aSelector];
+}
+#endif
 - (void)drawRect:(CGRect)rect
 {
     self.layer.shadowOffset = CGSizeZero;

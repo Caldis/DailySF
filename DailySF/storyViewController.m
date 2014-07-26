@@ -9,33 +9,45 @@
 #import "storyViewController.h"
 
 @implementation storyViewController
-int viewDidLoad = 0;
+
+#ifdef _FOR_DEBUG_
+-(BOOL) respondsToSelector:(SEL)aSelector {
+    printf("SELECTOR: %s\n", [NSStringFromSelector(aSelector) UTF8String]);
+    return [super respondsToSelector:aSelector];
+}
+#endif
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     
     //页面标示符
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    delegate.viewPage = (NSInteger *)1;
+    delegate.inMainViewController = (NSInteger *)0;
+    NSLog(@"Now inMainViewController is 0");
     
     //初始化并且添加backButton
-    UIImage *hamburger = [UIImage imageNamed:@"backbuttom"];
+    UIImage *hamburger = [UIImage imageNamed:@"backButtom"];
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.backButton.frame = CGRectMake(10.0f, 22.0f, 35.0f, 35.0f);
+    self.backButton.frame = CGRectMake(10.0f, 24.0f, 33.0f, 33.0f);
     [self.backButton setImage:hamburger forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backButton];
     
+    //接管手势代理
     self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
-    viewDidLoad = 1;
+    //设置标题
+    self.storyTitleLabel.text = self.storyTitle;
+    //设置内容
+    [self.storyWebView loadData:self.storyContent MIMEType:@"text/html" textEncodingName:@"UTF-8" baseURL:nil];
 }
 
+//在本页面时候接管右滑菜单，改为右滑返回
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    if (viewDidLoad)
-        return YES;
-    else
-        return NO;
+    return YES;
 }
 
+
+//返回按钮的操作
 - (void)back:(id)sender{
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
@@ -43,8 +55,9 @@ int viewDidLoad = 0;
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    delegate.viewPage = (NSInteger *)0;
-    viewDidLoad = 0;
+    delegate.inMainViewController = (NSInteger *)1;
+    NSLog(@"Now inMainViewController is 1");
+
 }
 
 @end

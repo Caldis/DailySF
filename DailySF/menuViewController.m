@@ -20,7 +20,12 @@ static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCo
 @end
 
 @implementation menuViewController
-
+#ifdef _FOR_DEBUG_
+-(BOOL) respondsToSelector:(SEL)aSelector {
+    printf("SELECTOR: %s\n", [NSStringFromSelector(aSelector) UTF8String]);
+    return [super respondsToSelector:aSelector];
+}
+#endif
 //初始化为色彩
 - (id)initWithColors:(NSArray *)colors{
     NSParameterAssert(colors);
@@ -51,6 +56,7 @@ static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCo
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kICSColorsViewControllerCellReuseId];
+    
     //设置为无分割线
      self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
@@ -62,7 +68,6 @@ static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCo
 {
     // 就算这个LeftViewCntroller隐藏了状态栏，要实现这个方法让然需要匹配相应的CenterViewController中相应的方法
     // 当状态栏被右滑打开时，避免状态栏的类型为flickr
-    // status bar style to avoid a flicker when the drawer is dragged and then left to open.
     return UIStatusBarStyleLightContent;
 }
 //状态栏是否隐藏
@@ -98,27 +103,24 @@ static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCo
     return cell;
 }
 
-//设定相应的TableView点击后的动作
+//设定点击相应的TableView后的动作
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == self.previousRow) {
-        // Close the drawer without no further actions on the center view controller
-        // 关闭drawer
+        //关闭drawer
         [self.drawer close];
     }
     else {
         switch (indexPath.row) {
             case 0:{
-                //Replace the current center view controller with a new one
                 //替换当前的CenterViewController为Storybroad中的mainCenterViewController
                 UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-                mainViewController *center = (mainViewController *)[storyboard instantiateInitialViewController];
+                mainViewController *center = (mainViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainCenterViewController"];
                 [self.drawer replaceCenterViewControllerWithViewController:center];
                 break;
             }
             case 1:{
-                //Replace the current center view controller with a new one
                 //替换当前的CenterViewController为Storybroad中的optionCenterViewController
                 UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
                 mainViewController *center = (mainViewController *)[storyboard instantiateViewControllerWithIdentifier:@"optionCenterViewController"];
@@ -126,7 +128,6 @@ static NSString * const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCo
                 break;
             }
             case 2:{
-                //Replace the current center view controller with a new one
                 //替换当前的CenterViewController为Storybroad中的aboutCenterViewController
                 UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
                 mainViewController *center = (mainViewController *)[storyboard instantiateViewControllerWithIdentifier:@"aboutCenterViewController"];

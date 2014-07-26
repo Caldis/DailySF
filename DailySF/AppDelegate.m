@@ -28,7 +28,12 @@
 #import "mainViewController.h"
 
 @implementation AppDelegate
-
+#ifdef _FOR_DEBUG_
+-(BOOL) respondsToSelector:(SEL)aSelector {
+    printf("SELECTOR: %s\n", [NSStringFromSelector(aSelector) UTF8String]);
+    return [super respondsToSelector:aSelector];
+}
+#endif
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSArray *menuList = [NSArray arrayWithObjects:@"Story",@"Option",@"About",nil];
@@ -39,7 +44,6 @@
     //初始化menuViewController
     menuViewController *left = [[menuViewController alloc]initWithMenus:menuList andColors:colors];
     //初始化mainviewcontroller为Storybroad中的mainCenterViewController
-    //mainViewController *center = [[mainViewController alloc]init];
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     mainViewController *center = (mainViewController *)[storyboard instantiateInitialViewController];
     

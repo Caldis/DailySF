@@ -9,15 +9,15 @@
 #import "mainViewController.h"
 #import "MJCollectionViewCell.h"
 
-#define QUERY_LIMIT 10
-
 @interface mainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout>
 
 //parallaxCollectionView
 @property (weak, nonatomic) IBOutlet UICollectionView *parallaxCollectionView;
 @property (nonatomic, strong) NSMutableArray *images;
 @property (nonatomic, strong) NSMutableArray *storyNameList;
+@property (nonatomic, strong) NSMutableArray *storyDsecribeList;
 @property (nonatomic, strong) NSMutableArray *storyPicList;
+@property (nonatomic, strong) NSMutableArray *storyContentList;
 
 //ICSD
 @property(nonatomic, strong) UIButton *openDrawerButton;
@@ -26,27 +26,23 @@
 
 
 @implementation mainViewController
-
+#ifdef _FOR_DEBUG_
+-(BOOL) respondsToSelector:(SEL)aSelector {
+    printf("SELECTOR: %s\n", [NSStringFromSelector(aSelector) UTF8String]);
+    return [super respondsToSelector:aSelector];
+}
+#endif
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
+    self.parallaxCollectionView.allowsSelection = YES;
     
     //页面标示符
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    delegate.viewPage = (NSInteger *)0;
-    
-    // Fill image array with images
-    NSUInteger index;
-    for (index = 0; index < 14; ++index) {
-        // Setup image name
-        NSString *name = [NSString stringWithFormat:@"image%03ld.jpg", (unsigned long)index];
-        if(!self.images)
-            self.images = [NSMutableArray arrayWithCapacity:0];
-        [self.images addObject:name];
-        NSLog(@"imagesCount is : %lu",(unsigned long)self.images.count);
-    }
-    //[self.parallaxCollectionView reloadData];
+    delegate.inMainViewController = (NSInteger *)1;
+    NSLog(@"Now inMainViewController is 1");
     
     //侧滑菜单栏
     //初始化并且添加openDrawerButton
@@ -78,27 +74,43 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    //return self.images.count;
     return self.storyNameList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MJCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MJCell" forIndexPath:indexPath];
     
-    //获得image并设置到cell
-    NSString* imageName = [self.images objectAtIndex:indexPath.item];
-    cell.image = [UIImage imageNamed:imageName];
+    //获得title并设置到每个cell
+    NSString *storyName = [self.storyNameList objectAtIndex:indexPath.item];
+    cell.title = storyName;
     
-    //设置图像相对cell偏移
+    //获得describe并设置到每个cell
+    NSString *storyDescribe = [self.storyDsecribeList objectAtIndex:indexPath.item];
+    cell.describe = storyDescribe;
+
+    //获得image并设置到每个cell
+    NSData *imageData = [self.storyPicList objectAtIndex:indexPath.item];
+    cell.image = [UIImage imageWithData:imageData];
+    
+    //设置图像相对自身的cell之偏移
     CGFloat yOffset = ((self.parallaxCollectionView.contentOffset.y - cell.frame.origin.y) / IMAGE_HEIGHT) * IMAGE_OFFSET_SPEED;
     cell.imageOffset = CGPointMake(0.0f, yOffset);
     
-    //获得title并设置到cell
-    NSString* storyName = [self.storyNameList objectAtIndex:indexPath.item];
-    NSLog(@"cellStoryName %li is : %@ ",(long)indexPath.item,storyName);
-    cell.title = storyName;
-
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"pushToStory"]) {
+        NSIndexPath *selectedPath = [[self.parallaxCollectionView indexPathsForSelectedItems]objectAtIndex:0];
+        
+        storyViewController *storyView = segue.destinationViewController;
+        //设置标题
+        NSString *storyName = [self.storyNameList objectAtIndex:selectedPath.row];
+        storyView.storyTitle = storyName;
+        //设置内容
+        NSData *storyContent = [self.storyContentList objectAtIndex:selectedPath.row];
+        storyView.storyContent = storyContent;
+    }
 }
 
 #pragma mark - UIScrollViewdelegate methods
@@ -171,16 +183,33 @@
                 
                 //获取文章标题
                 NSString *storyName = [storyData objectForKey:@"StoryName"];
-                NSLog(@"storyName is : %@",storyName);
-                //NSMutableArray初始化长度
-                if(!self.storyNameList)
+                if(!self.storyNameList) {
                     self.storyNameList = [NSMutableArray arrayWithCapacity:0];
+                }
                 [self.storyNameList addObject:storyName];
-                NSLog(@"addObjectDone");
+                
                 //获取文章描述
+                NSString *storyDescribe = [storyData objectForKey:@"StoryDescribe"];
+                if(!self.storyDsecribeList) {
+                    self.storyDsecribeList = [NSMutableArray arrayWithCapacity:0];
+                }
+                [self.storyDsecribeList addObject:storyDescribe];
                 
                 //获取文章配图
+                AVFile *storyPic = [storyData objectForKey:@"StoryPic"];
+                NSData *picData = [storyPic getData];
+                if (!self.storyPicList) {
+                    self.storyPicList = [NSMutableArray arrayWithCapacity:0];
+                }
+                [self.storyPicList addObject:picData];
                 
+                //获取文章内容
+                AVFile *storyContent = [storyData objectForKey:@"StoryContent"];
+                NSData *contentData = [storyContent getData];
+                if (!self.storyContentList) {
+                    self.storyContentList = [NSMutableArray arrayWithCapacity:0];
+                }
+                [self.storyContentList addObject:contentData];
             }
             [self reloadStoryData];
         }
@@ -192,8 +221,6 @@
 
 - (void) reloadStoryData{
     [self.parallaxCollectionView reloadData];
-    NSLog(@"storyNameListNum : %lu",(unsigned long)self.storyNameList.count);
-    NSLog(@"reloaddata");
 }
 
 @end

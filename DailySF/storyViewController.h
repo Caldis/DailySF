@@ -8,17 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-#import "ICSDrawerController.h"
-#import "mainViewController.h"
 
-@interface storyViewController : UIViewController <ICSDrawerControllerPresenting>
+@interface storyViewController : UIViewController <UIGestureRecognizerDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *TitleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *DescriptionLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *ImageView;
-@property (strong, nonatomic) NSArray *DetailModal;
-@property (strong, nonatomic) UIButton *backButton;
+@property (nonatomic, strong) IBOutlet UILabel *storyTitleLabel;
+@property (nonatomic, assign) NSString *storyTitle;
+
+@property (nonatomic, strong) IBOutlet UIWebView *storyWebView;
+@property (nonatomic, strong) NSData *storyContent;
+
+@property (nonatomic, strong) UIButton *backButton;
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
+
+
 
 @end

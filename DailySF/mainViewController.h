@@ -13,8 +13,10 @@
 #import "menuViewController.h"
 #import "storyViewController.h"
 #import "MJRefresh.h"
+#import "ICSDrawerController.h"
 
 @interface mainViewController : UIViewController <ICSDrawerControllerChild, ICSDrawerControllerPresenting>
+
 //ICSD
 @property(nonatomic, weak) ICSDrawerController *drawer;
 

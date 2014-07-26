@@ -11,12 +11,18 @@
 @interface MJCollectionViewCell()
 
 @property (nonatomic, strong, readwrite) UIImageView *MJImageView;
-@property (nonatomic, strong, readwrite) UILabel     *storyTitle;
+@property (nonatomic, strong, readwrite) FXLabel     *storyTitle;
+@property (nonatomic, strong, readwrite) FXLabel     *storyDescribe;
 
 @end
 
 @implementation MJCollectionViewCell
-
+#ifdef _FOR_DEBUG_
+-(BOOL) respondsToSelector:(SEL)aSelector {
+    printf("SELECTOR: %s\n", [NSStringFromSelector(aSelector) UTF8String]);
+    return [super respondsToSelector:aSelector];
+}
+#endif
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) [self setupCellView];
@@ -51,12 +57,27 @@
     [self addSubview:self.MJImageView];
     
     // Add title Label
-    self.storyTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 82, 300, 30)];
-    //self.storyTitle.text = @"Title";
+    self.storyTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 80, 300, 30)];
     self.storyTitle.backgroundColor = [UIColor clearColor];
     self.storyTitle.textColor = [UIColor whiteColor];
     self.storyTitle.font = [UIFont fontWithName:@"Arial" size:22];
+    self.storyDescribe.numberOfLines = 0;
+    self.storyTitle.shadowColor = [UIColor blackColor];
+    self.storyTitle.shadowOffset = CGSizeZero;
+    self.storyTitle.shadowBlur = 6.0f;
     [self addSubview:self.storyTitle];
+    
+    // Add describe Label
+    self.storyDescribe = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, 280, 50)];
+    self.storyDescribe.backgroundColor = [UIColor clearColor];
+    self.storyDescribe.textColor = [UIColor whiteColor];
+    self.storyDescribe.font = [UIFont fontWithName:@"Arial" size:14];
+    self.storyDescribe.numberOfLines = 0;
+    self.storyDescribe.shadowColor = [UIColor blackColor];
+    self.storyDescribe.shadowOffset = CGSizeZero;
+    self.storyDescribe.shadowBlur = 6.0f;
+    [self addSubview:self.storyDescribe];
+
 }
 
 # pragma mark - Setters
@@ -78,7 +99,10 @@
 
 - (void)setTitle:(NSString *)title {
     self.storyTitle.text = title;
-    NSLog(@"title in Cell is : %@",title);
+}
+
+- (void)setDescribe:(NSString *)describe {
+    self.storyDescribe.text = describe;
 }
 
 @end
