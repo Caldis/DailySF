@@ -42,7 +42,8 @@
     //页面标示符
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     delegate.inMainViewController = (NSInteger *)1;
-    NSLog(@"Now inMainViewController is 1");
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+
     
     //侧滑菜单栏
     //初始化并且添加openDrawerButton

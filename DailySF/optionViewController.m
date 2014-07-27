@@ -14,8 +14,6 @@
     [super viewDidLoad];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     delegate.inMainViewController = (NSInteger *)1;
-    NSLog(@"Now inMainViewController is 0");
-
 }
 
 - (void)didReceiveMemoryWarning

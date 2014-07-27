@@ -23,7 +23,6 @@
     //页面标示符
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     delegate.inMainViewController = (NSInteger *)0;
-    NSLog(@"Now inMainViewController is 0");
     
     //初始化并且添加backButton
     UIImage *hamburger = [UIImage imageNamed:@"backButtom"];
@@ -35,6 +34,7 @@
     
     //接管手势代理
     self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     //设置标题
     self.storyTitleLabel.text = self.storyTitle;
     //设置内容
@@ -56,8 +56,7 @@
     [super viewDidDisappear:animated];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     delegate.inMainViewController = (NSInteger *)1;
-    NSLog(@"Now inMainViewController is 1");
-
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
 @end

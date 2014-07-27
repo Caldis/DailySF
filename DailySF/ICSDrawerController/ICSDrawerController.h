@@ -75,7 +75,7 @@
  
  @see initWithLeftViewController:centerViewController:
  */
-@property(nonatomic, strong, readonly) UIViewController<ICSDrawerControllerChild, ICSDrawerControllerPresenting> *leftViewController;
+@property(nonatomic, retain, readonly) UIViewController<ICSDrawerControllerChild, ICSDrawerControllerPresenting> *leftViewController;
 /**
  The center view controller.
 
@@ -84,7 +84,7 @@
 
  @see replaceCenterViewControllerWithViewController:
  */
-@property(nonatomic, strong, readonly) UIViewController<ICSDrawerControllerChild, ICSDrawerControllerPresenting> *centerViewController;
+@property(nonatomic, retain, readonly) UIViewController<ICSDrawerControllerChild, ICSDrawerControllerPresenting> *centerViewController;
 
 /**
  @name Initialization

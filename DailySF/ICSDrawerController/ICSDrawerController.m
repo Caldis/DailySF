@@ -45,11 +45,11 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
 
 @interface ICSDrawerController () <UIGestureRecognizerDelegate>
 
-@property(nonatomic, strong, readwrite) UIViewController<ICSDrawerControllerChild, ICSDrawerControllerPresenting> *leftViewController;
-@property(nonatomic, strong, readwrite) UIViewController<ICSDrawerControllerChild, ICSDrawerControllerPresenting> *centerViewController;
+@property(nonatomic, retain, readwrite) UIViewController<ICSDrawerControllerChild, ICSDrawerControllerPresenting> *leftViewController;
+@property(nonatomic, retain, readwrite) UIViewController<ICSDrawerControllerChild, ICSDrawerControllerPresenting> *centerViewController;
 
-@property(nonatomic, strong) UIView *leftView;
-@property(nonatomic, strong) ICSDropShadowView *centerView;
+@property(nonatomic, retain) UIView *leftView;
+@property(nonatomic, retain) ICSDropShadowView *centerView;
 
 @property(nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property(nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
@@ -188,8 +188,12 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
 {
     NSParameterAssert([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]);
     CGPoint velocity = [(UIPanGestureRecognizer *)gestureRecognizer velocityInView:self.view];
-
+    
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    if([self respondsToSelector:@selector(interactivePopGestureRecognizer)] && delegate.inMainViewController){
+        self.interactivePopGestureRecognizer.enabled = NO;
+    }
+    
     if ((self.drawerState == ICSDrawerControllerStateClosed && velocity.x > 0.0f) && delegate.inMainViewController) {
         return YES;
     }
@@ -207,12 +211,7 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
     UIGestureRecognizerState state = panGestureRecognizer.state;
     CGPoint location = [panGestureRecognizer locationInView:self.view];
     CGPoint velocity = [panGestureRecognizer velocityInView:self.view];
-    
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    if([self respondsToSelector:@selector(interactivePopGestureRecognizer)] && delegate.inMainViewController){
-        self.interactivePopGestureRecognizer.enabled = NO;
-    }
-    
+ 
     switch (state) {
 
         case UIGestureRecognizerStateBegan:
