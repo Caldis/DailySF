@@ -43,7 +43,10 @@
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     delegate.inMainViewController = (NSInteger *)1;
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-
+    
+    //设置背景图片
+    UIImageView *colBG = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"viewBGimage.png"]];
+    [self.parallaxCollectionView setBackgroundView:colBG];
     
     //侧滑菜单栏
     //初始化并且添加openDrawerButton
@@ -155,12 +158,18 @@
 - (void)drawerControllerDidClose:(ICSDrawerController *)drawerController{
     self.view.userInteractionEnabled = YES;
     self.openDrawerButton.userInteractionEnabled = YES;
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    delegate.menuDidClose = (NSInteger *)1;
 }
 
 #pragma mark - Open drawer button
 //点击菜单按钮的操作
 - (void)openDrawer:(id)sender{
-    [self.drawer open];
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    if (delegate.menuDidClose) {
+        [self.drawer open];
+        delegate.menuDidClose = (NSInteger *)0;
+    }
 }
 
 #pragma mark - AVOS

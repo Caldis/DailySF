@@ -41,6 +41,7 @@
 		75CF6F141968A76D0003484A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CF6F131968A76D0003484A /* CoreLocation.framework */; };
 		75CF6F161968A77B0003484A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CF6F151968A77B0003484A /* libicucore.dylib */; };
 		75DBBC22198427ED002B79F0 /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DBBC21198427ED002B79F0 /* FXLabel.m */; };
+		75DBBC2519852484002B79F0 /* viewBGimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 75DBBC2419852484002B79F0 /* viewBGimage.png */; };
 		75E57D921959EB9500222895 /* storyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E57D911959EB9500222895 /* storyViewController.m */; };
 		75E8CFEE1955EDAA004D7F05 /* menuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E8CFED1955EDAA004D7F05 /* menuViewController.m */; };
 		75E8CFF11955F1FE004D7F05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E8CFF01955F1FE004D7F05 /* AppDelegate.m */; };
@@ -110,6 +111,7 @@
 		75CF6F151968A77B0003484A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		75DBBC20198427ED002B79F0 /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		75DBBC21198427ED002B79F0 /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		75DBBC2419852484002B79F0 /* viewBGimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = viewBGimage.png; sourceTree = "<group>"; };
 		75E57D901959EB9500222895 /* storyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = storyViewController.h; sourceTree = "<group>"; };
 		75E57D911959EB9500222895 /* storyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = storyViewController.m; sourceTree = "<group>"; };
 		75E8CFEC1955EDAA004D7F05 /* menuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menuViewController.h; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 		755C89E91955CC9700BA4EFF /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				75DBBC2319852477002B79F0 /* Image */,
 				758C4F09197AA4AF00803DFE /* Buttom */,
 				755C89C71955C9FF00BA4EFF /* Images.xcassets */,
 			);
@@ -299,6 +302,14 @@
 				75DBBC21198427ED002B79F0 /* FXLabel.m */,
 			);
 			path = FXLabel;
+			sourceTree = "<group>";
+		};
+		75DBBC2319852477002B79F0 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				75DBBC2419852484002B79F0 /* viewBGimage.png */,
+			);
+			name = Image;
 			sourceTree = "<group>";
 		};
 		75E5208A196D75670023E8A1 /* MJCollectionViewCell */ = {
@@ -399,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75789E891956E30700549E5D /* Entitlements.plist in Resources */,
+				75DBBC2519852484002B79F0 /* viewBGimage.png in Resources */,
 				755C89C81955C9FF00BA4EFF /* Images.xcassets in Resources */,
 				755C89BA1955C9FF00BA4EFF /* InfoPlist.strings in Resources */,
 				753BEF30195C7E9B00FED55B /* backButtom.png in Resources */,
