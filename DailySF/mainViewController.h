@@ -8,16 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <AVOSCloud/AVOSCloud.h>
+
 #import "AppDelegate.h"
-#import "ICSDrawerController.h"
 #import "menuViewController.h"
 #import "storyViewController.h"
+
 #import "MJRefresh.h"
 #import "ICSDrawerController.h"
 
-@interface mainViewController : UIViewController <ICSDrawerControllerChild, ICSDrawerControllerPresenting>
+@interface mainViewController : UIViewController <ICSDrawerControllerChild, ICSDrawerControllerPresenting, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout>
 
 //ICSD
 @property(nonatomic, weak) ICSDrawerController *drawer;
+
+//BGPic
+@property(nonatomic, strong) IBOutlet UIImageView *colBG;
 
 @end

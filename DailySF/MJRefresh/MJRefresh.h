@@ -25,3 +25,8 @@
  1> [self.tableView headerEndRefreshing];
  2> [self.tableView footerEndRefreshing];
 */
+
+
+//箭头的左右位置在MJRefreshHeaderView.m的willMoveToSuperview
+//去掉了日期显示,注释掉MJRefreshHeaderView.m的self.lastUpdateTimeLabel.text = [NSString stringWithFormat:@"最后更新：%@", time];
+//减小了下拉所用的距离,在MJRefreshHeaderView.m的CGFloat normal2pullingOffsetY = happenOffsetY - self.height中

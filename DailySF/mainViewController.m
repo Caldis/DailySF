@@ -8,8 +8,9 @@
 
 #import "mainViewController.h"
 #import "MJCollectionViewCell.h"
+NSString *const MJCollectionViewCellIdentifier = @"Cell";
 
-@interface mainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface mainViewController ()
 
 //parallaxCollectionView
 @property (weak, nonatomic) IBOutlet UICollectionView *parallaxCollectionView;
@@ -36,17 +37,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-
     self.parallaxCollectionView.allowsSelection = YES;
     
     //页面标示符
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     delegate.inMainViewController = (NSInteger *)1;
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    
-    //设置背景图片
-    UIImageView *colBG = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"viewBGimage.png"]];
-    [self.parallaxCollectionView setBackgroundView:colBG];
     
     //侧滑菜单栏
     //初始化并且添加openDrawerButton
@@ -57,12 +53,12 @@
     [self.openDrawerButton addTarget:self action:@selector(openDrawer:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.openDrawerButton];
     
-    //下拉刷新
-    // 1.注册cell
-    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MJTableViewCellIdentifier];
-    // 2.集成刷新控件
-    //[self setupRefresh];
-    
+    //集成刷新控件
+    [self addHeader];
+    [self addFooter];
+    [self.parallaxCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:MJCollectionViewCellIdentifier];
+
+    //网络数据
     [self getQuery];
 }
 
@@ -76,11 +72,9 @@
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.storyNameList.count;
 }
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MJCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MJCell" forIndexPath:indexPath];
     
@@ -103,6 +97,7 @@
     return cell;
 }
 
+#pragma mark - PassStoryData
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"pushToStory"]) {
         NSIndexPath *selectedPath = [[self.parallaxCollectionView indexPathsForSelectedItems]objectAtIndex:0];
@@ -143,11 +138,11 @@
 
 #pragma mark - ICSDrawerControllerPresenting
 //开/关侧边菜单的时候是否响应用户操作
-- (void)drawerControllerWillOpen:(ICSDrawerController *)drawerController{
+- (void)drawerControllerWillOpen:(ICSDrawerController  *)drawerController{
     self.view.userInteractionEnabled = YES;
     self.openDrawerButton.userInteractionEnabled = YES;
 }
-- (void)drawerControllerDidOpen:(ICSDrawerController *)drawerController{
+- (void)drawerControllerDidOpen:(ICSDrawerController   *)drawerController{
     self.view.userInteractionEnabled = NO;
     self.openDrawerButton.userInteractionEnabled = NO;
 }
@@ -155,7 +150,7 @@
     self.view.userInteractionEnabled = NO;
     self.openDrawerButton.userInteractionEnabled = NO;
 }
-- (void)drawerControllerDidClose:(ICSDrawerController *)drawerController{
+- (void)drawerControllerDidClose:(ICSDrawerController  *)drawerController{
     self.view.userInteractionEnabled = YES;
     self.openDrawerButton.userInteractionEnabled = YES;
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
@@ -185,7 +180,7 @@
     [query whereKeyExists:@"StoryName"];
     //排序依据
     [query orderByDescending:@"createdAt"];
-
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (objects.count) {
             for (AVObject *post in objects) {
@@ -228,9 +223,38 @@
         }
     }];
 }
-
-- (void) reloadStoryData{
+- (void)reloadStoryData{
     [self.parallaxCollectionView reloadData];
 }
+
+#pragma mark - MJRefresh
+// 添加下拉刷新头部控件
+- (void)addHeader{
+    // 进入刷新状态就会回调这个Block
+    [self.parallaxCollectionView addHeaderWithCallback:^{
+        // 模拟延迟加载数据，因此2秒后才调用）
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.parallaxCollectionView reloadData];
+            // 结束刷新
+            [self.parallaxCollectionView headerEndRefreshing];
+        });
+    }];
+    
+    //自动刷新(一进入程序就下拉刷新)
+    //[self.parallaxCollectionView headerBeginRefreshing];
+}
+// 添加上拉刷新尾部控件
+- (void)addFooter{
+    // 进入刷新状态就会回调这个Block
+    [self.parallaxCollectionView addFooterWithCallback:^{
+        // 模拟延迟加载数据，因此2秒后才调用）
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.parallaxCollectionView reloadData];
+            // 结束刷新
+            [self.parallaxCollectionView footerEndRefreshing];
+        });
+    }];
+}
+
 
 @end

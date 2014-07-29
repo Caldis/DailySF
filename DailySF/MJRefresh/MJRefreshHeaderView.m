@@ -49,20 +49,19 @@
 {
     [super layoutSubviews];
     
-    //CGFloat statusX = 0;
-    //CGFloat statusY = 26;
-    //CGFloat statusHeight = self.height * 0.5;
-    //CGFloat statusWidth = self.width;
+    CGFloat statusX = 0;
+    CGFloat statusY = 0;
+    CGFloat statusHeight = self.height * 0.5;
+    CGFloat statusWidth = self.width;
     // 1.状态标签
-    //self.statusLabel.frame = CGRectMake(statusX, statusY, statusWidth, statusHeight);
-    //self.statusLabel.font = [UIFont boldSystemFontOfSize:15];
+    self.statusLabel.frame = CGRectMake(statusX, statusY, statusWidth, statusHeight);
     
     // 2.时间标签
-    //CGFloat lastUpdateY = statusHeight;
-    //CGFloat lastUpdateX = 0;
-    //CGFloat lastUpdateHeight = statusHeight;
-    //CGFloat lastUpdateWidth = statusWidth;
-    //self.lastUpdateTimeLabel.frame = CGRectMake(lastUpdateX, lastUpdateY, lastUpdateWidth, lastUpdateHeight);
+    CGFloat lastUpdateY = statusHeight;
+    CGFloat lastUpdateX = 0;
+    CGFloat lastUpdateHeight = statusHeight;
+    CGFloat lastUpdateWidth = statusWidth;
+    self.lastUpdateTimeLabel.frame = CGRectMake(lastUpdateX, lastUpdateY, lastUpdateWidth, lastUpdateHeight);
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview
@@ -70,7 +69,7 @@
     [super willMoveToSuperview:newSuperview];
     
     // 设置自己的位置和尺寸
-    self.y = - self.height;
+    self.y = - self.height + 14;
 }
 
 #pragma mark - 状态相关
@@ -84,7 +83,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     // 2.更新时间
-    //[self updateTimeLabel];
+    [self updateTimeLabel];
 }
 
 #pragma mark 更新时间字符串
@@ -107,10 +106,10 @@
     } else {
         formatter.dateFormat = @"yyyy-MM-dd HH:mm";
     }
-    NSString *time = [formatter stringFromDate:self.lastUpdateTime];
+    //NSString *time = [formatter stringFromDate:self.lastUpdateTime];
     
     // 3.显示日期
-    self.lastUpdateTimeLabel.text = [NSString stringWithFormat:@"最后更新：%@", time];
+    //self.lastUpdateTimeLabel.text = [NSString stringWithFormat:@"最后更新：%@", time];
 }
 
 #pragma mark - 监听UIScrollView的contentOffset属性
@@ -142,7 +141,7 @@
     
     if (self.scrollView.isDragging) {
         // 普通 和 即将刷新 的临界点
-        CGFloat normal2pullingOffsetY = happenOffsetY - self.height;
+        CGFloat normal2pullingOffsetY = happenOffsetY - self.height + 26;
         
         if (self.state == MJRefreshStateNormal && currentOffsetY < normal2pullingOffsetY) {
             // 转为即将刷新状态
@@ -214,7 +213,7 @@
             [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
                 // 1.增加滚动区域
                 CGFloat top = self.scrollViewOriginalInset.top + self.height;
-                self.scrollView.contentInsetTop = top;
+                self.scrollView.contentInsetTop = top - 24;
                 
                 // 2.设置滚动位置
                 self.scrollView.contentOffsetY = - top;

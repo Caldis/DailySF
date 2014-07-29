@@ -18,7 +18,7 @@
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LYw-V8-nsa">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.97727272727272729" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.97510601651874451" blue="0.96406502658899573" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="poa-OU-SV8">
                                     <size key="itemSize" width="320" height="160"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -60,7 +60,7 @@
                                 <color key="backgroundColor" red="0.14947148176526226" green="0.67684847291607309" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="New" id="W0l-xd-y0T"/>
                     <connections>

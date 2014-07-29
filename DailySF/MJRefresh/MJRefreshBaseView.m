@@ -85,8 +85,8 @@
     [super layoutSubviews];
     
     // 1.箭头
-    CGFloat arrowX = self.width * 0.5;
-    self.arrowImage.center = CGPointMake(arrowX, self.height * 0.6);
+    CGFloat arrowX = self.width * 0.5 - 100;
+    self.arrowImage.center = CGPointMake(arrowX, self.height * 0.5);
     
     // 2.指示器
     self.activityView.center = self.arrowImage.center;
@@ -105,7 +105,7 @@
         // 设置宽度
         self.width = newSuperview.width;
         // 设置位置
-        self.x = 0;
+        self.x = 100;
         
         // 记录UIScrollView
         _scrollView = (UIScrollView *)newSuperview;
