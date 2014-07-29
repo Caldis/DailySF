@@ -58,7 +58,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
     [self addFooter];
     [self.parallaxCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:MJCollectionViewCellIdentifier];
 
-    //网络数据
+    //获取网络数据
     [self getQuery];
 }
 
